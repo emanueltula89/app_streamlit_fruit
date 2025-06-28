@@ -1,0 +1,6 @@
+streamlit
+pandas
+matplotlib
+altair
+pyarrow==10.0.1
+numpy==1.26.4
