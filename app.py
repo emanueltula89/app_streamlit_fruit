@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt  <-- Esta línea borrada o comentada
 import altair as alt
 
 # 1. Título de la aplicación
