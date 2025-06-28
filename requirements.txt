@@ -1,6 +1,5 @@
-streamlit
-pandas
-matplotlib
-altair
-pyarrow==10.0.1
-numpy==1.26.4
+streamlit==1.36.0 # Una versión muy estable de Streamlit
+pandas==2.2.2    # Una versión compatible de pandas
+altair==5.3.0    # Una versión compatible de Altair
+pyarrow==10.0.1  # La versión que te funcionó localmente
+numpy==1.26.4    # La versión que te funcionó localmente
