@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 from io import BytesIO
 from datetime import datetime
-import locale
+# import locale # Eliminar o comentar si no se usa después
 import unicodedata
 import re
 import time
@@ -15,8 +15,6 @@ st.set_page_config(
     page_icon="🏠", # Un ícono que aparecerá junto al nombre
     layout="wide"
 )
-
-
 
 # --- Text Normalization Function ---
 def normalize_text(text):
@@ -69,17 +67,18 @@ def get_lat_lon_country(location_name):
         return (None, None, 'Desconocido')
 
 
-# Try to set locale for Spanish month names
-try:
-    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
-except locale.Error:
-    try:
-        locale.setlocale(locale.LC_TIME, 'es_ES')
-    except locale.Error:
-        st.warning(
-            "No se pudo establecer la configuración regional en español. Los nombres de los meses pueden aparecer en inglés.")
+# # BLOQUE COMENTADO/ELIMINADO: Intentos de establecer la configuración regional
+# try:
+#     locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+# except locale.Error:
+#     try:
+#         locale.setlocale(locale.LC_TIME, 'es_ES')
+#     except locale.Error:
+#         st.warning(
+#             "No se pudo establecer la configuración regional en español. Los nombres de los meses pueden aparecer en inglés.")
 
-st.set_page_config(layout="wide")
+# # SEGUNDA LLAMADA A st.set_page_config ELIMINADA:
+# # st.set_page_config(layout="wide")
 
 
 def cargar_datos(ruta_archivo):
@@ -101,6 +100,7 @@ def cargar_datos(ruta_archivo):
 # --- Función para crear botón de descarga a Excel ---
 def to_excel(df):
     output = BytesIO()
+    # Asegúrate de que xlsxwriter está instalado y en requirements.txt
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
     df.to_excel(writer, index=False, sheet_name='Sheet1')
     writer.close()
@@ -200,6 +200,7 @@ if df is not None:
             df['Anio'] = df[COLUMNA_FECHA_EMISION].dt.year
 
             # Mapeo de números de mes a nombres en español
+            # (Si el locale no funciona, esto asegura los nombres en español)
             nombres_meses_es = {
                 1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio",
                 7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"

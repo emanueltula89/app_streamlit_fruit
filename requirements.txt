@@ -5,4 +5,5 @@ pyarrow==10.0.1
 numpy==1.26.4
 gspread
 plotly
-geopy # <--- ¡Añade esta línea!
+geopy
+xlsxwriter # <--- ¡Añade esta línea!
